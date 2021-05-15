@@ -14,6 +14,9 @@ greatest_decrease = ["", 9999999999999999999]
 #Assign a variable for filepath
 file_path = os.path.join(".", "Resources/budget_data.csv")
 
+#Create variable for output file
+file_output_path = os.path.join(".", "analysis/budget_analysis_file.txt")
+
 #Read the contents of the file
 with open(file_path) as csvfile:
 	csvreader = csv.reader(csvfile)
@@ -41,8 +44,6 @@ with open(file_path) as csvfile:
 			greatest_decrease[0] = row[0]
 			greatest_decrease[1] = row[1]
 
-
-
 #Calculate the Average Amount Change
 amount_change_avg = sum(amount_change_list) / len(amount_change_list)
 
@@ -51,7 +52,7 @@ output = (
 	f"\nFinancial Analysis\n"
 	f"-----------------------------\n"
 	f"\nTotal Months:  {total_months}\n"
-	f"\nTotal Revenue: ${net_amount}\n"
+	f"\nTotal: ${net_amount}\n"
 	f"\nAverage Change: ${amount_change_avg}\n"
 	f"\nAverage Increase in Profits: {greatest_increase[0]} (${greatest_increase[1]})\n"
 	f"\nAverage Decrease in Profits: {greatest_decrease[0]} (${greatest_decrease[1]})\n"
@@ -59,9 +60,6 @@ output = (
 
 #Print the output
 print(output)
-
-#Create variable for output file
-file_output_path = os.path.join(".", "analysis/analysis_file.txt")
 
 #Export the results to a text file
 with open(file_output_path, "w") as output_file:
