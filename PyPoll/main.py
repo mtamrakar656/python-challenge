@@ -68,18 +68,17 @@ for candidate in num_of_votes:
 
 	#Set variable for voter count and percentage
 	voter_output = f"{candidate}: {vote_percentage:.3f}% ({votes})\n"
+	print(voter_output)
+	#Save each candidate's voter count and percentage to text file
+	election_output_file.write(voter_output)	
 
-
-#Set output
-output = (
-	"f\nElection Results\n"
-	"f-------------------------------\n"
-	"f\nTotal Votes: {total_votes}\n"
-	"f-------------------------------\n"
-	"f\n{voter_output}"
-	"f\nWinner: {winning_candidate}"
+#Print the winning candidate
+winning_candidate_summary = (
+	f"-------------------------\n"
+	f"Winner: {winning_candidate}"
+	f"-------------------------\n"
 )
+print(winning_candidate_summary)
 
-#Print output to terminal
-print(output)
-
+#Save the winning candidate's name to the txt file
+election_output_file.write(winning_candidate_summary)
